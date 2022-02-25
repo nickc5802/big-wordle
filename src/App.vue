@@ -1,15 +1,22 @@
 <template>
-  <img alt="Vue logo" src="./assets/logo.png">
-  <HelloWorld msg="Welcome to Your Vue.js App"/>
+  <GamePage v-if="onGamePage"/>
+  <HomePage v-else @play="() => onGamePage = true"/>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
+import GamePage from './pages/game.vue'
+import HomePage from './pages/home.vue'
 
 export default {
   name: 'App',
   components: {
-    HelloWorld
+    HomePage,
+    GamePage
+  },
+  data() {
+    return {
+      onGamePage: false
+    }
   }
 }
 </script>
