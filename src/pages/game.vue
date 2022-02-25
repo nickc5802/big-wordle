@@ -1,6 +1,9 @@
 <template>
   <div class="game">
-    <GameInstance v-for="n in numGames" :key="n" :word="words[n - 1]" :guesses="guesses" :current="current" :guess="guess" />
+    <div class="jumpBar">
+      <a v-for="n in numGames" :key="n" :href="'#' + n">{{n}}</a>
+    </div>
+    <GameInstance v-for="n in numGames" :id="n" :key="n" :word="words[n - 1]" :guesses="guesses" :current="current" :guess="guess" />
   </div>
 </template>
 
@@ -58,6 +61,20 @@ export default {
 <style scoped>
   game {
     display: flex;
-    flex-direction: row;
+  }
+  .jumpBar {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    position: sticky;
+    top: 0px;
+    background: white;
+  }
+  .jumpBar * {
+    margin: 1px;
+    padding: 2px;
+    border: 1px solid black;
+    text-decoration: none;
+    color: black;
   }
 </style>

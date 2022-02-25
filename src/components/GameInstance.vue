@@ -40,7 +40,7 @@ export default {
       display: inline-block;
     }
     .gameInstance {
-      margin: 1px;
+      margin: 2px;
     }
     td {
       width: 50px;
