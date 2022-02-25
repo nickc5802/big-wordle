@@ -1,6 +1,6 @@
 <template>
   <GamePage v-if="onGamePage" :numGames="numGames"/>
-  <HomePage v-else @play="play"/>
+  <HomePage v-else @play="play" />
 </template>
 
 <script>
@@ -21,7 +21,7 @@ export default {
   },
   methods: {
     play(numGames) {
-      this.numGames = numGames;
+      this.numGames = parseInt(numGames);
       this.onGamePage = true;
     }
   }

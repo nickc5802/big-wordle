@@ -1,12 +1,18 @@
 <template>
   <div class="home">
-    <button @click="$emit('play', 2)">Play</button>
+    <input v-model="numGames">
+    <button @click="$emit('play', numGames)">Play</button>
   </div>
 </template>
 
 <script>
 export default {
   name: 'HomePage',
+  data() {
+    return {
+      numGames: 2
+    }
+  },
   emits: [
       'play'
   ]
