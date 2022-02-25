@@ -1,11 +1,11 @@
 <template>
-  <GamePage v-if="onGamePage"/>
-  <HomePage v-else @play="() => onGamePage = true"/>
+  <GamePage v-if="onGamePage" :numGames="numGames"/>
+  <HomePage v-else @play="play"/>
 </template>
 
 <script>
-import GamePage from './pages/game.vue'
-import HomePage from './pages/home.vue'
+import GamePage from './pages/Game.vue'
+import HomePage from './pages/Home.vue'
 
 export default {
   name: 'App',
@@ -15,7 +15,14 @@ export default {
   },
   data() {
     return {
-      onGamePage: false
+      onGamePage: false,
+      numGames: 1
+    }
+  },
+  methods: {
+    play(numGames) {
+      this.numGames = numGames;
+      this.onGamePage = true;
     }
   }
 }
