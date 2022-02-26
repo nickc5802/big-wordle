@@ -8,7 +8,7 @@
         <GameInstance v-for="n in numGames" :gameNum="n" :key="n" :word="words[n - 1]" :guesses="guesses" :current="current" :guess="guess" />
       </div>
     </div>
-    <KeyBoard @keyboard="(key) => keyDown({code: key})"/>
+    <KeyBoard :guessedLetters="guessedLetters" @keyboard="(key) => keyDown({code: key})"/>
   </div>
 </template>
 
@@ -29,7 +29,8 @@ export default {
       guesses: this.getInitialGuesses(),
       current: "",
       guess: 0,
-      correct: new Set()
+      correct: new Set(),
+      guessedLetters: new Set()
     }
   },
   props: ['numGames'],
@@ -51,6 +52,9 @@ export default {
         let index = this.words.indexOf(this.current.toLowerCase());
         if (index !== -1) {
           this.correct.add(index + 1);
+        }
+        for (let i = 0; i < this.current.length; i++) {
+          this.guessedLetters.add(this.current.charAt(i));
         }
         this.current = "";
       }
