@@ -8,7 +8,7 @@
         <GameInstance v-for="n in numGames" :gameNum="n" :key="n" :word="words[n - 1]" :guesses="guesses" :current="current" :guess="guess" />
       </div>
     </div>
-    <KeyBoard />
+    <KeyBoard @keyboard="(key) => keyDown({code: key})"/>
   </div>
 </template>
 
@@ -91,6 +91,7 @@ export default {
     position: absolute;
     top: 0;
     right: 0;
+    left: 0;
     bottom: 0;
     overflow: auto;
   }
