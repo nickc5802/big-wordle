@@ -1,5 +1,5 @@
 <template>
-  <div class="gameInstance">
+  <div class="gameInstance" :id="'game' + gameNum">
       <table>
           <tr v-for="w in guesses.length" :key="guesses[w - 1]">
               <td v-for="l in 5" :key="l" :class="showGuess(w - 1) ? getClass(w - 1, l - 1) : ''">
@@ -14,7 +14,7 @@
 <script>
 export default {
   name: 'gameInstance',
-  props: ['word', 'guesses', 'current', 'guess'],
+  props: ['word', 'guesses', 'current', 'guess', 'gameNum'],
   data() {
     return {
 
@@ -36,11 +36,8 @@ export default {
 </script>
 
 <style scoped>
-    table, .gameInstance {
-      display: inline-block;
-    }
     .gameInstance {
-      margin: 2px;
+      display: inline-block;
     }
     td {
       width: 50px;
